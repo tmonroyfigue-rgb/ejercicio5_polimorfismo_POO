@@ -1,5 +1,6 @@
 package Modelo;
 
+public class modulo {
     private int id;
     private String nombre;
     private double salud;
@@ -28,7 +29,15 @@ package Modelo;
         return costoConstruccion;
     }
 
-    public void set nombre (String nombre) {
+    public void setnombre (String nombre) {
         this.nombre = nombre;
     }
-    
+
+    public void setsalud (double salud) {
+        this.salud = salud;
+    }
+
+    public void setcostoConstruccion (double costoConstruccion) {
+        this.costoConstruccion = costoConstruccion;
+    }
+}
