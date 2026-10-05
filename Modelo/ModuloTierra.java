@@ -1,4 +1,6 @@
-public class ModuloTierra extends Modulo {
+package Modelo;
+
+public class ModuloTierra extends modulo {
 
     private double datosDescargadosPorCiclo;
     private double consumoEnergia;

@@ -1,11 +1,13 @@
-public class ModuloEnergia extends Modulo {
+package Modelo;
+
+public class ModuloEnergia extends modulo {
 
     private String tipoFuente;
     private double energiaPorCiclo;
 
     public ModuloEnergia(int id, String nombre, double salud,
-                        double costo, String tipoFuente,
-                        double energiaPorCiclo) {
+                         double costo, String tipoFuente,
+                         double energiaPorCiclo) {
         super(id, nombre, salud, costo);
         this.tipoFuente = tipoFuente;
         this.energiaPorCiclo = energiaPorCiclo;

@@ -1,9 +1,11 @@
+package Modelo;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Mision {
 
-    private ArrayList<Modulo> modulos;
+    private ArrayList<modulo> modulos;
 
     public Mision() {
         modulos = new ArrayList<>();
@@ -11,7 +13,6 @@ public class Mision {
     }
 
     public void cargarDatosIniciales() {
-        // Evita duplicar los datos si se vuelve a cargar la mision.
         modulos.clear();
 
         agregarModulo(new ModuloVuelo(
@@ -65,48 +66,44 @@ public class Mision {
         ));
     }
 
-    // El parametro acepta objetos de cualquiera de las clases hijas.
-    public void agregarModulo(Modulo modulo) {
-        if (modulo == null) {
+    public void agregarModulo(modulo nuevoModulo) {
+        if (nuevoModulo == null) {
             throw new IllegalArgumentException(
                 "El modulo no puede ser null."
             );
         }
 
-        if (buscarModulo(modulo.getId()) != null) {
+        if (buscarModulo(nuevoModulo.getid()) != null) {
             throw new IllegalArgumentException(
                 "Ya existe un modulo con ese ID."
             );
         }
 
-        modulos.add(modulo);
+        modulos.add(nuevoModulo);
     }
 
-    public ArrayList<Modulo> getModulos() {
-        // Devuelve una copia para proteger la estructura de la lista.
+    public ArrayList<modulo> getModulos() {
         return new ArrayList<>(modulos);
     }
 
-    public Modulo buscarModulo(int id) {
-        for (Modulo modulo : modulos) {
-            if (modulo.getId() == id) {
-                return modulo;
+    public modulo buscarModulo(int id) {
+        for (modulo actual : modulos) {
+            if (actual.getid() == id) {
+                return actual;
             }
         }
 
         return null;
     }
 
-    // Sobrecarga: mismo nombre, distinto tipo de parametro.
-    // Devuelve la primera coincidencia exacta, ignorando mayusculas.
-    public Modulo buscarModulo(String nombre) {
+    public modulo buscarModulo(String nombre) {
         if (nombre == null) {
             return null;
         }
 
-        for (Modulo modulo : modulos) {
-            if (modulo.getNombre().equalsIgnoreCase(nombre.trim())) {
-                return modulo;
+        for (modulo actual : modulos) {
+            if (actual.getnombre().equalsIgnoreCase(nombre.trim())) {
+                return actual;
             }
         }
 
@@ -114,7 +111,6 @@ public class Mision {
     }
 
     public void ordenarPorCosto() {
-        // Utiliza el compareTo definido en Modulo.
         Collections.sort(modulos);
     }
 }
