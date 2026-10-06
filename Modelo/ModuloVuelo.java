@@ -1,13 +1,15 @@
 package Modelo;
-public class ModuloVuelo extends modulo{
+
+public class ModuloVuelo extends Modulo {
+
     private String tipoInstrumento;
     private double datosPorCiclo;
-    
-    public ModuloVuelo(int id, String nombre, double salud, double costo, String tipoInstrumento, double datosPorCiclo){
+
+    public ModuloVuelo(int id, String nombre, double salud, double costo,
+                       String tipoInstrumento, double datosPorCiclo) {
         super(id, nombre, salud, costo);
         this.tipoInstrumento = tipoInstrumento;
         this.datosPorCiclo = datosPorCiclo;
-
     }
 
     public String getTipoInstrumento() {
@@ -26,11 +28,18 @@ public class ModuloVuelo extends modulo{
         this.datosPorCiclo = datosPorCiclo;
     }
 
-    public String procesarCiclo(){
-        return procesarCiclo();
+    @Override
+    public String procesarCiclo() {
+        return "El instrumento " + tipoInstrumento
+                + " recolecta " + datosPorCiclo
+                + " MB de datos cientificos por ciclo.";
     }
 
-    public String toString(){
-        return toString();
+    @Override
+    public String toString() {
+        return super.toString()
+                + "\nTipo de modulo: Vuelo"
+                + "\nTipo de instrumento: " + tipoInstrumento
+                + "\nDatos recolectados por ciclo: " + datosPorCiclo + " MB";
     }
 }

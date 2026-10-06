@@ -2,16 +2,16 @@ package Vista;
 
 import java.util.Scanner;
 
-public class vistaConsola {
+public class VistaConsola {
 
     private Scanner entrada;
 
-    public vistaConsola() {
+    public VistaConsola() {
         entrada = new Scanner(System.in);
     }
 
     public void mostrarMenu() {
-        System.out.println(" Quetzal 2");
+        System.out.println("\n===== DEFENSA DE QTZ2 =====");
         System.out.println("1. Listar todos los modulos");
         System.out.println("2. Buscar modulo por ID");
         System.out.println("3. Buscar modulo por nombre");
@@ -26,10 +26,8 @@ public class vistaConsola {
 
             try {
                 return Integer.parseInt(texto.trim());
-            } catch (NumberFormatException e) {
-                System.out.println(
-                    "Entrada invalida. Escriba un numero entero."
-                );
+            } catch (NumberFormatException error) {
+                System.out.println("Entrada invalida. Escriba un numero entero.");
             }
         }
     }

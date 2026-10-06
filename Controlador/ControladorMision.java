@@ -1,15 +1,15 @@
 package Controlador;
 
 import Modelo.Mision;
-import Modelo.modulo;
-import Vista.vistaConsola;
+import Modelo.Modulo;
+import Vista.VistaConsola;
 
 public class ControladorMision {
 
     private Mision modelo;
-    private vistaConsola vista;
+    private VistaConsola vista;
 
-    public ControladorMision(Mision modelo, vistaConsola vista) {
+    public ControladorMision(Mision modelo, VistaConsola vista) {
         this.modelo = modelo;
         this.vista = vista;
     }
@@ -25,68 +25,49 @@ public class ControladorMision {
                 case 1:
                     listarModulos();
                     break;
-
                 case 2:
                     buscarPorId();
                     break;
-
                 case 3:
                     buscarPorNombre();
                     break;
-
                 case 4:
                     ordenarModulos();
                     break;
-
                 case 5:
-                    vista.mostrarMensaje(
-                        "Programa finalizado. Hasta pronto."
-                    );
+                    vista.mostrarMensaje("Programa finalizado. Hasta pronto.");
                     break;
-
                 default:
-                    vista.mostrarMensaje(
-                        "Opcion invalida. Seleccione del 1 al 5."
-                    );
-                    break;
+                    vista.mostrarMensaje("Opcion invalida. Seleccione del 1 al 5.");
             }
         } while (opcion != 5);
     }
 
     private void listarModulos() {
-        vista.mostrarMensaje(
-            "\n===== MODULOS DE LA MISION ====="
-        );
+        vista.mostrarMensaje("\n===== MODULOS DE LA MISION =====");
 
-        for (modulo actual : modelo.getModulos()) {
-            mostrarDetalle(actual);
+        for (Modulo modulo : modelo.getModulos()) {
+            mostrarDetalle(modulo);
         }
     }
 
     private void buscarPorId() {
         int id = vista.leerEntero("Ingrese el ID del modulo: ");
-        modulo encontrado = modelo.buscarModulo(id);
+        Modulo encontrado = modelo.buscarModulo(id);
 
         if (encontrado == null) {
-            vista.mostrarMensaje(
-                "No se encontro un modulo con ese ID."
-            );
+            vista.mostrarMensaje("No se encontro un modulo con ese ID.");
         } else {
             mostrarDetalle(encontrado);
         }
     }
 
     private void buscarPorNombre() {
-        String nombre = vista.leerTexto(
-            "Ingrese el nombre completo del modulo: "
-        );
-
-        modulo encontrado = modelo.buscarModulo(nombre);
+        String nombre = vista.leerTexto("Ingrese el nombre completo del modulo: ");
+        Modulo encontrado = modelo.buscarModulo(nombre);
 
         if (encontrado == null) {
-            vista.mostrarMensaje(
-                "No se encontro un modulo con ese nombre."
-            );
+            vista.mostrarMensaje("No se encontro un modulo con ese nombre.");
         } else {
             mostrarDetalle(encontrado);
         }
@@ -94,23 +75,13 @@ public class ControladorMision {
 
     private void ordenarModulos() {
         modelo.ordenarPorCosto();
-
-        vista.mostrarMensaje(
-            "\nModulos ordenados de menor a mayor costo."
-        );
-
+        vista.mostrarMensaje("\nModulos ordenados de menor a mayor costo.");
         listarModulos();
     }
 
-    private void mostrarDetalle(modulo actual) {
-        vista.mostrarMensaje(
-            "\n--------------------------------"
-        );
-
-        vista.mostrarMensaje(actual.toString());
-
-        vista.mostrarMensaje(
-            "Accion por ciclo: " + actual.procesarCiclo()
-        );
+    private void mostrarDetalle(Modulo modulo) {
+        vista.mostrarMensaje("\n--------------------------------");
+        vista.mostrarMensaje(modulo.toString());
+        vista.mostrarMensaje("Accion por ciclo: " + modulo.procesarCiclo());
     }
 }

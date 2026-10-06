@@ -1,63 +1,59 @@
 package Modelo;
 
-public abstract class modulo implements Comparable<modulo> {
+public abstract class Modulo implements Comparable<Modulo> {
 
     private int id;
     private String nombre;
     private double salud;
     private double costoConstruccion;
 
-    public modulo(int id, String nombre, double salud,
-                  double costoConstruccion) {
+    public Modulo(int id, String nombre, double salud, double costoConstruccion) {
         this.id = id;
         this.nombre = nombre;
         this.salud = salud;
         this.costoConstruccion = costoConstruccion;
     }
 
-    public int getid() {
+    public int getId() {
         return id;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public double getsalud() {
+    public double getSalud() {
         return salud;
     }
 
-    public double getcostoConstruccion() {
+    public double getCostoConstruccion() {
         return costoConstruccion;
     }
 
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setsalud(double salud) {
+    public void setSalud(double salud) {
         this.salud = salud;
     }
 
-    public void setcostoConstruccion(double costoConstruccion) {
+    public void setCostoConstruccion(double costoConstruccion) {
         this.costoConstruccion = costoConstruccion;
     }
 
     public abstract String procesarCiclo();
 
     @Override
-    public int compareTo(modulo otro) {
-        return Double.compare(
-            this.costoConstruccion,
-            otro.costoConstruccion
-        );
+    public int compareTo(Modulo otro) {
+        return Double.compare(this.costoConstruccion, otro.costoConstruccion);
     }
 
     @Override
     public String toString() {
         return "ID: " + id
-            + "\nNombre: " + nombre
-            + "\nSalud: " + salud + "%"
-            + "\nCosto de construccion: " + costoConstruccion;
+                + "\nNombre: " + nombre
+                + "\nSalud: " + salud + "%"
+                + "\nCosto de construccion: Q" + costoConstruccion;
     }
 }
